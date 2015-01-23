@@ -4,27 +4,90 @@
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <meta http-equiv="content-type" content="text/html;charset=UTF-8">
         <meta name="renderer" content="webkit">
-        <meta name="keywords" content="">
-        <meta name="description" content="">
+        <meta name="keywords" content="rgb,rgb颜色,rgb转16进制">
+        <meta name="description" content="双向转换RGB色值与16进制色值的小工具（A two-way conversion tool for Hex & RGB colors）">
+        <meta name="author" content="http://desheng.me" />
         <title>RGB转16进制 / RGB to Hex</title>
+
         <link href="./bootstrap-3.3.1.min.css" rel="stylesheet">
 
         <style type="text/css">
             .container-main {
                 margin-top: 50px;
+                min-height: 400px;
             }
 
-            .container-main .form-inline .input-group > .form-control {
+            .form-inline .input-group > .form-control {
                 width: 100px;
             }
 
-            .container-main .demo-block {
+            .preview-box {
                 width: 100px;
                 height: 100px;
                 line-height: 100px;
                 background-color:#eee;
             }
+
+            #rgb-to-hex .input-group-addon {
+                color: #fff;
+            }
+
+            #rgb-to-hex .input-group-red .input-group-addon {
+                background-color: red;
+                border-color: red;
+            }
+
+            #rgb-to-hex .input-group-red .form-control {
+                border-color: red;
+            }
+
+            #rgb-to-hex .input-group-green .input-group-addon {
+                background-color: green;
+                border-color: green;
+            }
+
+            #rgb-to-hex .input-group-green .form-control {
+                border-color: green;
+            }
+
+            #rgb-to-hex .input-group-blue .input-group-addon {
+                background-color: blue;
+                border-color: blue;
+            }
+
+            #rgb-to-hex .input-group-blue .form-control {
+                border-color: blue;
+            }
+
+            #hex-to-rgb .result {
+                display: inline-block;
+                margin: 0 5px;
+            }
+
+            #hex-to-rgb .result-red {
+                color: red;
+            }
+
+            #hex-to-rgb .result-green {
+                color: green;
+            }
+
+            #hex-to-rgb .result-blue {
+                color: blue;
+            }
         </style>
+
+        <script type="text/javascript">
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-49657970-1', 'www.jobtong.com');
+            ga('require', 'displayfeatures');
+            ga('set', 'dimension1', 'anonymous');
+            ga('send', 'pageview');
+        </script>
     </head>
     <body>
         <div class="container container-main">
@@ -33,19 +96,19 @@
                     <legend>RGB to HEX</legend>
                     <form class="form-inline" role="form">
                         <div class="form-group">
-                            <div class="input-group">
+                            <div class="input-group input-group-red">
                                 <div class="input-group-addon">R</div>
                                 <input type="text" class="form-control input-lg" placeholder="Red" v-model="red">
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="input-group">
+                            <div class="input-group input-group-green">
                                 <div class="input-group-addon">G</div>
                                 <input type="text" class="form-control input-lg" placeholder="Green" v-model="green">
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="input-group">
+                            <div class="input-group input-group-blue">
                                 <div class="input-group-addon">B</div>
                                 <input type="text" class="form-control input-lg" placeholder="Blue" v-model="blue">
                             </div>
@@ -54,7 +117,7 @@
 
                     <div class="text-center">
                         <h3>#{{hex}}</h3>
-                        <div class="center-block demo-block" v-style="background-color: '#' + hex"></div>
+                        <div class="center-block preview-box" v-style="background-color: '#' + hex"></div>
                     </div>
                 </div>
 
@@ -70,10 +133,21 @@
                     </form>
 
                     <div class="text-center">
-                        <h3>R:{{red}} R:{{green}} B:{{blue}}</h3>
-                        <div class="center-block demo-block" v-style="background-color: 'rgb(' + red + ',' + green + ',' + blue + ')'"></div>
+                        <h3>
+                            <span class="result result-red">R:{{red}}</span>
+                            <span class="result result-green">G:{{green}}</span>
+                            <span class="result result-blue">B:{{blue}}</span>
+                        </h3>
+                        <div class="center-block preview-box" v-style="background-color: 'rgb(' + red + ',' + green + ',' + blue + ')'"></div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row text-center">
+                <p>Created By <a href="http://desheng.me">一升</a> @<a href="http://www.jobtong.com/" target="_blank">周伯通招聘</a></p>
+                <p>Powered By <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a> & <a href="http://vuejs.org/" target="_blank">Vue.js</a></p>
             </div>
         </div>
 
@@ -111,5 +185,12 @@
                 }
             });
         </script>
+
+        <div style="display:none;">
+            <script type="text/javascript">
+                var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fcbd1c666d9ecfce2daab16095311bc1c' type='text/javascript'%3E%3C/script%3E"));
+            </script>
+        </div>
     </body>
 </html>
